@@ -11,28 +11,36 @@
   <h1>Политика конфиденциальности</h1>
   <p class="lead">«Пульт» — личная программа, которая работает только на компьютере автора каналов. Действует с 4 ноября 2026 года.</p>
 
-  <h2>Какие данные Google получает «Пульт»</h2>
+  <h2>Какие данные получает «Пульт»</h2>
+  <h3>Google и YouTube</h3>
   <ul>
     <li><strong>Загрузка видео</strong> (<code>youtube.upload</code>) — чтобы загружать ролики автора на его канал YouTube с названием, описанием и временем публикации.</li>
     <li><strong>Чтение данных канала</strong> (<code>youtube.readonly</code>) — только чтобы узнать название подключённого канала и показать автору, какой канал подключён.</li>
   </ul>
-  <p>«Пульт» не читает, не меняет и не удаляет другие видео, комментарии, подписчиков, статистику или личные данные аккаунта.</p>
+  <h3>Instagram</h3>
+  <ul>
+    <li><strong>Публикация</strong> (<code>instagram_business_content_publish</code>) — чтобы публиковать Reels автора в его профессиональном аккаунте Instagram с описанием и обложкой.</li>
+    <li><strong>Основные данные профиля</strong> (<code>instagram_business_basic</code>) — только идентификатор и имя пользователя, чтобы показать автору, какой аккаунт подключён.</li>
+  </ul>
+  <p>Код входа Instagram показывается на странице входа только на экране автора, страница никуда его не отправляет. Автор сам передаёт код своей программе через своего бота в Telegram.</p>
+  <p>«Пульт» не читает, не меняет и не удаляет другие публикации, сообщения, комментарии, подписчиков, статистику или личные данные аккаунтов.</p>
 
   <h2>Где хранятся данные</h2>
-  <p>Ключи доступа, которые выдаёт Google, хранятся только в файле на компьютере автора. У «Пульта» нет сервера: данные не отправляются никуда, кроме самого Google при загрузке ролика.</p>
+  <p>Ключи доступа, которые выдают Google и Instagram, хранятся только в файле на компьютере автора. У «Пульта» нет сервера: данные не отправляются никуда, кроме самих Google и Instagram при публикации ролика. Чтобы Instagram мог забрать видео, на время публикации «Пульт» открывает одноразовую временную ссылку на этот файл и закрывает её сразу после загрузки.</p>
 
   <h2>Кому данные передаются</h2>
   <p>Никому. Данные не продаются, не передаются третьим лицам, не используются для рекламы и для обучения моделей искусственного интеллекта.</p>
   <p>Использование и передача данных, полученных через API Google, соответствует <a href="https://developers.google.com/terms/api-services-user-data-policy">правилам Google API Services User Data Policy</a>, включая требования об ограниченном использовании (Limited Use).</p>
 
-  <h2>Как отозвать доступ</h2>
-  <p>Доступ можно отозвать в любой момент на странице <a href="https://myaccount.google.com/permissions">«Сторонние приложения и сервисы»</a> аккаунта Google. После этого «Пульт» больше не сможет загружать видео, а сохранённый ключ доступа перестанет работать. Автор может также удалить файл с ключами на своём компьютере.</p>
+  <h2 id="deletion">Как отозвать доступ и удалить данные</h2>
+  <p>Доступ к Google можно отозвать в любой момент на странице <a href="https://myaccount.google.com/permissions">«Сторонние приложения и сервисы»</a> аккаунта Google. Доступ к Instagram — в приложении Instagram: «Настройки» → «Разрешения для сайтов» → «Приложения и сайты». После этого «Пульт» больше не сможет публиковать, а сохранённые ключи перестанут работать.</p>
+  <p>Все данные «Пульта» — это файл с ключами на компьютере автора. Чтобы удалить их полностью, достаточно удалить этот файл. Других копий нет.</p>
 
   <h2>Связь</h2>
   <p>Вопросы по этой политике: <a href="mailto:andrey0499@gmail.com">andrey0499@gmail.com</a>.</p>
 
   <footer>
-    <p><strong>English summary.</strong> Pult is a personal desktop tool with no server and no users other than its author. It requests the <code>youtube.upload</code> scope to upload the author's own videos to the author's own YouTube channels and the <code>youtube.readonly</code> scope only to read the connected channel's name. Access tokens are stored only on the author's computer and are never shared, sold or used for advertising or AI training. Use of information received from Google APIs adheres to the Google API Services User Data Policy, including the Limited Use requirements. Access can be revoked at any time at myaccount.google.com/permissions. Contact: andrey0499@gmail.com.</p>
+    <p><strong>English summary.</strong> Pult is a personal desktop tool with no server and no users other than its author. It requests the <code>youtube.upload</code> scope to upload the author's own videos to the author's own YouTube channels, the <code>youtube.readonly</code> scope only to read the connected channel's name, and the Instagram <code>instagram_business_content_publish</code> and <code>instagram_business_basic</code> permissions to publish the author's own Reels to the author's own professional Instagram accounts and to read their username. Access tokens are stored only on the author's computer and are never shared, sold or used for advertising or AI training. Use of information received from Google APIs adheres to the Google API Services User Data Policy, including the Limited Use requirements. Access can be revoked at any time at myaccount.google.com/permissions and in Instagram settings (Website permissions → Apps and websites). To delete all data, delete the key file on the author's computer; no other copies exist. Contact: andrey0499@gmail.com.</p>
     <p><a href="index.html">← На главную</a></p>
   </footer>
 </main>

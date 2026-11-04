@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Пульт — вход в Instagram</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  pre { white-space: pre-wrap; word-break: break-all; background: var(--line); padding: 12px; border-radius: 10px; font-size: 13px; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+  .button { border: 0; border-radius: 10px; padding: 12px 18px; font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; background: var(--accent); color: white; }
+  .button.secondary { background: var(--line); color: var(--text); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Вход в Instagram</h1>
+  <div id="ok" hidden>
+    <p class="lead">Осталось передать код пульту.</p>
+    <ol>
+      <li>Нажми «Скопировать».</li>
+      <li>Открой своего бота в Telegram и отправь ему скопированное сообщение.</li>
+    </ol>
+    <pre id="command"></pre>
+    <div class="buttons">
+      <button class="button" id="copy" type="button">Скопировать</button>
+      <a class="button secondary" id="bot" hidden>Открыть бота</a>
+    </div>
+    <p>Код действует час и подходит один раз. Эта страница никуда его не отправляет: он показан только на твоём экране.</p>
+  </div>
+  <div id="error" hidden>
+    <p class="lead">Вход не завершён.</p>
+    <p id="reason"></p>
+    <p>Вернись в пульт и нажми «Ссылку в Telegram» ещё раз.</p>
+  </div>
+  <footer><p><a href="index.html">Пульт</a> · <a href="privacy.html">Политика конфиденциальности</a></p></footer>
+</main>
+<script>
+  const params = new URLSearchParams(location.search);
+  const code = (params.get('code') || '').replace(/#_$/, '');
+  const state = params.get('state') || '';
+  if (code && state) {
+    const command = `/ig ${state} ${code}`;
+    document.getElementById('command').textContent = command;
+    document.getElementById('ok').hidden = false;
+    const bot = state.split('~')[1];
+    if (/^\w+$/.test(bot || '')) {
+      const link = document.getElementById('bot');
+      link.href = `https://t.me/${bot}`;
+      link.hidden = false;
+    }
+    const copy = document.getElementById('copy');
+    copy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(command);
+        copy.textContent = 'Скопировано';
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(document.getElementById('command'));
+        getSelection().removeAllRanges();
+        getSelection().addRange(range);
+        copy.textContent = 'Выделено — скопируй вручную';
+      }
+    });
+  } else {
+    document.getElementById('reason').textContent = params.get('error_description') || params.get('error') || 'Instagram не вернул код входа.';
+    document.getElementById('error').hidden = false;
+  }
+</script>
+</body>
+</html>
